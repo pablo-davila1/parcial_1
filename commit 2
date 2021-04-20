@@ -1,0 +1,57 @@
+const int SER = 2;
+const int RCLK = 4;
+const int SRCLK = 5;
+
+void _RCLK (int RCLK);
+void _SRCLK (int SRCLK);
+
+
+int puertos[3] = {SER,RCLK,SRCLK};
+
+void setup(){
+	//(paso 1) configuracion de puertos digitales como salida
+ 	/*pinMode(SER , OUTPUT); <- usando un ciclo for(){}
+  	pinMode(RCLK , OUTPUT);
+  	pinMode(SRCLK , OUTPUT);
+	
+  	digitalWrite(SER , 0);
+  	digitalWrite(RCLK , 0);
+  	digitalWrite(SRCLK , 0);*/
+  
+  
+  for(int i = 0; i<3 ; i++){
+    pinMode(puertos[i] , OUTPUT);
+    digitalWrite(puertos[i] , 0);}
+  
+  	
+  	//(paso 2) llevar dato al puerto serial del 74HC595 1/0
+
+  for (int i = 0; i<6 ; i++ ){//Prender el led numero 5
+    if (i==1){				  //usando ciclos
+    	digitalWrite(SER , 1);
+    	_SRCLK (SRCLK);
+        _RCLK (RCLK);}
+    else{
+    	digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);
+        _RCLK (RCLK);}
+        
+  }
+
+  
+
+} 
+
+void loop(){
+}
+
+void _RCLK (int RCLK){//     Esta funcion gnere un cambio 
+    digitalWrite(RCLK , 0);//en el puerto RCLK (010) _|-|_
+  	digitalWrite(RCLK , 1);
+  	digitalWrite(RCLK , 0);} 
+
+void _SRCLK (int SRCLK){//     Esta funcion gnere un cambio 
+    digitalWrite(SRCLK , 0);//en el puerto SRCLK (010) _|-|_
+  	digitalWrite(SRCLK , 1);
+  	digitalWrite(SRCLK , 0);}
+  
