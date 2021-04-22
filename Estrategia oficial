@@ -1,0 +1,156 @@
+const int SER = 3;
+const int RCLK = 4;
+const int SRCLK = 5;
+
+const int SER2 = 10;
+const int RCLK2 = 11;
+const int SRCLK2 = 12;
+
+void _RCLK (int RCLK);
+void _SRCLK (int SRCLK);
+
+void _RCLK2 (int RCLK2);
+void _SRCLK2 (int SRCLK2);
+
+
+int puertos1[3] = {SER,RCLK,SRCLK};
+int puertos2[3] = {SER2,RCLK2,SRCLK2};
+
+void setup(){
+	//(paso 1) configuracion de puertos digitales como salida
+   
+  for(int i = 0; i<3 ; i++){
+    pinMode(puertos1[i] , OUTPUT);
+    digitalWrite(puertos1[i] , 0);}
+  
+   for(int i = 0; i<3 ; i++){
+    pinMode(puertos2[i] , OUTPUT);
+    digitalWrite(puertos2[i] , 0);}
+  
+  	
+  	//(paso 2) llevar dato al puerto serial del 74HC595 1/0
+  
+  //-------ojos ---------
+
+    for(int i =1; i<=8 ; i++){
+    if(i==3 || i==6){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==7){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+
+ delay(60) ;
+
+ //--------boca------------------
+ 
+    for(int i =1; i<=8 ; i++){
+    if(i==2 || i==7){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==4){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+ delay(40);
+  
+  //-------------------------------
+  for(int i =1; i<=8 ; i++){
+    if(i==3 || i==6){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==3){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+delay(20);
+  
+
+} 
+
+void loop(){
+}
+
+void _RCLK (int RCLK){
+    digitalWrite(RCLK , 0);
+  	digitalWrite(RCLK , 1);
+  	digitalWrite(RCLK , 0);} 
+
+void _SRCLK (int SRCLK){
+    digitalWrite(SRCLK , 0);
+  	digitalWrite(SRCLK , 1);
+  	digitalWrite(SRCLK , 0);}
+
+void _RCLK2 (int RCLK2){
+    digitalWrite(RCLK2 , 0);
+  	digitalWrite(RCLK2 , 1);
+  	digitalWrite(RCLK2 , 0);} 
+
+void _SRCLK2 (int SRCLK2){
+    digitalWrite(SRCLK2 , 0);
+  	digitalWrite(SRCLK2 , 1);
+  	digitalWrite(SRCLK2 , 0);}
