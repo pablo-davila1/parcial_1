@@ -1,0 +1,1203 @@
+
+const int SER = 3;
+const int RCLK = 4;
+const int SRCLK = 5;
+
+const int SER2 = 10;
+const int RCLK2 = 11;
+const int SRCLK2 = 12;
+
+void _RCLK (int RCLK);
+void _SRCLK (int SRCLK);
+
+void _RCLK2 (int RCLK2);
+void _SRCLK2 (int SRCLK2);
+
+
+int puertos1[3] = {SER,RCLK,SRCLK};
+int puertos2[3] = {SER2,RCLK2,SRCLK2};
+
+
+
+void setup(){
+	//(paso 1) configuracion de puertos digitales como salida
+   
+  for(int i = 0; i<3 ; i++){
+    pinMode(puertos1[i] , OUTPUT);
+    digitalWrite(puertos1[i] , 0);}
+  
+   for(int i = 0; i<3 ; i++){
+    pinMode(puertos2[i] , OUTPUT);
+    digitalWrite(puertos2[i] , 0);}
+  
+  for (int i = 0; i<8 ; i++){
+    	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);
+  
+  }
+  
+  	
+  	//(paso 2) llevar dato al puerto serial del 74HC595 1/0
+  
+    //*(*(puntero_cuadro + FILAS) + COLUMNAS);
+ int columna1[8] = {0,1,0,0,0,0,1,0};
+ int columna2[8] = {0,1,0,0,0,0,1,0};
+ int columna3[8] = {0,1,0,0,0,0,1,0};
+ int columna4[8] = {0,1,1,1,1,1,1,0};
+ int columna5[8] = {0,1,1,1,1,1,1,0};
+ int columna6[8] = {0,1,0,0,0,0,1,0};
+ int columna7[8] = {0,1,0,0,0,0,1,0};
+ int columna8[8] = {0,1,0,0,0,0,1,0};
+ int c=0;
+  
+
+//------------ un solo patron----------  
+  while (c<=2){
+  //-------columna 1-------------
+    for(int i =1; i<=8 ; i++){
+    if(columna1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+	
+    	if(j==8){
+      	 	digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+
+ delay(55) ;
+  //-------columna 2------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna2[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==7 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(50) ;
+ //-------columna 3------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna3[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==6 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(40) ;
+  
+     //-------columna 4------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna4[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==5 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(30) ;
+     //-------columna 5------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna5[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==4 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(25) ;
+  
+     //-------columna 6------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna6[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==3 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(20) ;
+    
+     //-------columna 7------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna7[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==2 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(15) ;
+  
+     //-------columna 8------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna8[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==1 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(10);
+  
+  c++;
+  } 
+//--------------------------------
+
+ int columna1_1[8] = {0,1,0,0,0,0,1,0};
+ int columna2_1[8] = {0,1,0,0,0,0,1,0};
+ int columna3_1[8] = {0,1,0,0,0,0,1,0};
+ int columna4_1[8] = {0,1,1,1,1,1,1,0};
+ int columna5_1[8] = {0,1,0,0,0,0,1,0};
+ int columna6_1[8] = {0,1,0,0,0,0,1,0};
+ int columna7_1[8] = {0,1,0,0,0,0,1,0};
+ int columna8_1[8] = {0,1,0,0,0,0,1,0};
+ //--------------------------------
+ int columna9[8] =  {0,1,1,1,1,1,1,0};
+ int columna10[8] = {0,1,1,1,1,1,1,0};
+ int columna11[8] = {0,1,0,0,0,0,0,0};
+ int columna12[8] = {0,1,1,1,1,1,1,0};
+ int columna13[8] = {0,1,1,1,1,1,1,0};
+ int columna14[8] = {0,1,0,0,0,0,0,0};
+ int columna15[8] = {0,1,1,1,1,1,1,0};
+ int columna16[8] = {0,1,1,1,1,1,1,0};
+ //-----------------------------------
+ int columna17[8] = {0,1,0,0,0,0,1,0};
+ int columna18[8] = {0,1,0,0,0,0,1,0};
+ int columna19[8] = {0,1,1,0,0,1,1,0};
+ int columna20[8] = {0,0,0,1,1,0,0,0};
+ int columna21[8] = {0,0,0,1,1,0,0,0};
+ int columna22[8] = {0,0,0,1,1,0,0,0};
+ int columna23[8] = {0,0,0,1,1,0,0,0};
+ int columna24[8] = {0,0,0,1,1,0,0,0};
+  
+ c=0;
+  
+//------------patron 1----------  
+  while (c<=2){
+  //-------columna 1-------------
+    for(int i =1; i<=8 ; i++){
+    if(columna1_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+	
+    	if(j==8){
+      	 	digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+
+ delay(55) ;
+  //-------columna 2------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna2_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==7 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(50) ;
+ //-------columna 3------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna3_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==6 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(40) ;
+  
+     //-------columna 4------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna4_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==5 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(30) ;
+     //-------columna 5------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna5_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==4 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(25) ;
+  
+     //-------columna 6------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna6_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==3 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(20) ;
+    
+     //-------columna 7------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna7_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==2 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(15) ;
+  
+     //-------columna 8------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna8_1[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==1 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(10);
+  
+	c++;
+  } 
+  
+  c=0;
+  //------------patron 2----------  
+  while (c<=2){
+  //-------columna 1-------------
+    for(int i =1; i<=8 ; i++){
+    if(columna9[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+	
+    	if(j==8){
+      	 	digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+
+ delay(55) ;
+  //-------columna 2------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna10[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==7 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(50) ;
+ //-------columna 3------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna11[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==6 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(40) ;
+  
+     //-------columna 4------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna12[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==5 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(30) ;
+     //-------columna 5------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna13[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==4 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(25) ;
+  
+     //-------columna 6------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna14[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==3 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(20) ;
+    
+     //-------columna 7------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna15[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==2 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(15) ;
+  
+     //-------columna 8------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna16[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==1 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(10);
+  
+	c++;
+  } 
+  
+  c=0;
+  //------------patron 3----------  
+  while (c<=2){
+  //-------columna 1-------------
+    for(int i =1; i<=8 ; i++){
+    if(columna17[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+	
+    	if(j==8){
+      	 	digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+  
+
+ delay(55) ;
+  //-------columna 2------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna18[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==7 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(50) ;
+ //-------columna 3------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna19[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==6 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(40) ;
+  
+     //-------columna 4------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna20[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==5 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(30) ;
+     //-------columna 5------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna21[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==4 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(25) ;
+  
+     //-------columna 6------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna22[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==3 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(20) ;
+    
+     //-------columna 7------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna23[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==2 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(15) ;
+  
+     //-------columna 8------------------ 
+for(int i =1; i<=8 ; i++){
+    if(columna24[i-1]!=0){
+      	digitalWrite(SER , 1);
+  		_SRCLK (SRCLK);
+        for(int j =1; j<=8 ; j++){
+    		if(j==1 ){
+      		digitalWrite(SER2 , 0);
+  			_SRCLK2 (SRCLK2);}	
+    	else if(j==8){
+      	 	digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);
+			_RCLK2 (RCLK2);}    
+    	else{
+     		digitalWrite(SER2 , 1);
+  			_SRCLK2 (SRCLK2);}
+  		}
+    
+    
+    }
+      
+
+   else if(i==8){
+      	digitalWrite(SER , 0);
+  		_SRCLK (SRCLK);
+		_RCLK (RCLK);}
+      
+   else{
+       digitalWrite(SER , 0);
+    	_SRCLK (SRCLK);}
+   }
+    
+   delay(10);
+  
+	c++;
+  } 
+  
+  
+
+}
+void loop(){
+}
+
+void _RCLK (int RCLK){
+    digitalWrite(RCLK , 0);
+  	digitalWrite(RCLK , 1);
+  	digitalWrite(RCLK , 0);} 
+
+void _SRCLK (int SRCLK){
+    digitalWrite(SRCLK , 0);
+  	digitalWrite(SRCLK , 1);
+  	digitalWrite(SRCLK , 0);}
+
+void _RCLK2 (int RCLK2){
+    digitalWrite(RCLK2 , 0);
+  	digitalWrite(RCLK2 , 1);
+  	digitalWrite(RCLK2 , 0);} 
+
+void _SRCLK2 (int SRCLK2){
+    digitalWrite(SRCLK2 , 0);
+  	digitalWrite(SRCLK2 , 1);
+  	digitalWrite(SRCLK2 , 0);}
